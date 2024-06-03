@@ -7,11 +7,16 @@ use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/form', [StudyController::class, 'index'])->name('form');
+Route::get('/{any}', function () {
+    return view('app');
+})->where('any', '.*');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/form', [StudyController::class, 'index'])->name('form');
 
 
 Route::get('/subjects', [SubjectController::class, 'index'])->name('subjects');

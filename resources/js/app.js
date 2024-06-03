@@ -1,9 +1,21 @@
 import './bootstrap';
 import { createApp } from 'vue';
-
-const app = createApp({});
-
+import { createRouter, createWebHistory } from 'vue-router';
+import App from './App.vue';
 import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+import FormQuantidade from './components/FormQuantidade.vue';
 
+
+const routes = [
+    {path: '/', component: ExampleComponent },
+    {path: '/form', component: FormQuantidade }
+];
+
+const router = createRouter({
+    history: createWebHistory(),
+    routes
+})
+
+const app = createApp(App);
+app.use(router);
 app.mount('#app');
